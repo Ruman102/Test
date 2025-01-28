@@ -13,6 +13,8 @@ This is a Python-based script that automates terminal commands with specific int
 1. Clone the repository:
    ```bash
    git clone https://github.com/ruman102/test/auto-command.git
+   ```
+   ```bash
    cd auto-command
    ```
 2. Install the required dependencies:
