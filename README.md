@@ -15,7 +15,7 @@ This is a Python-based script that automates terminal commands with specific int
    git clone https://github.com/ruman102/test
    ```
    ```bash
-   cd test
+   cd Test
    ```
 2. Install the required dependencies:
    ```bash
