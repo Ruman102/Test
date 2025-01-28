@@ -1,7 +1,19 @@
-
 import os
 import time
-import keyboard
+import signal
+import sys
+
+# Global variable to handle termination
+terminate_process = False
+
+def signal_handler(sig, frame):
+    global terminate_process
+    print("\nProcess Stopped by User (Ctrl+C)")
+    terminate_process = True
+    sys.exit(0)
+
+# Attach signal handler for Ctrl+C
+signal.signal(signal.SIGINT, signal_handler)
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')  # Windows: cls, Others: clear
@@ -14,12 +26,12 @@ def display_header():
     print("=" * 50)
 
 def execute_command(command, interval, repeat_count):
+    global terminate_process
     for _ in range(repeat_count):
+        if terminate_process:
+            break
         os.system(command)
         time.sleep(interval * 60)  # Convert minutes to seconds
-        if keyboard.is_pressed("ctrl+x"):  # Stop with Ctrl+X
-            print("\nProcess Stopped by User (Ctrl+X)")
-            return
     print("\nAll repetitions completed.")
 
 def main():
@@ -46,3 +58,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
